@@ -10,14 +10,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 public class ExcelWriter {
-
-    public static void crearPlanilla() {
-        String excelPath = Config.leerRutaVentas();
+    
+    public void CrearPlanilla() {
         
-        File file = new File(excelPath);
-        Workbook workbook = null;
-        Sheet sheet = null;
-
+    String excelPath = Config.LeerRutaVentas(); 
+    File file = new File(excelPath);
+    Workbook workbook = null;
+    Sheet sheet = null;
         try {
             // Asegurar que exista el directorio padre
             File parent = file.getParentFile();
@@ -45,7 +44,7 @@ public class ExcelWriter {
             } else {
                 sheet = workbook.createSheet("Ventas");
             }
-
+            
             // Calcular el número de fila siguiente
             int rowNum;
             if (sheet.getPhysicalNumberOfRows() == 0) {
@@ -70,5 +69,6 @@ public class ExcelWriter {
             e.printStackTrace();
         }
     }
+ 
 }
 
