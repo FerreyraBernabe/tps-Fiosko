@@ -1,0 +1,22 @@
+# Compilados
+/bin/
+/out/
+/target/
+/build/
+
+# Archivos de IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.project
+.classpath
+.settings/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
