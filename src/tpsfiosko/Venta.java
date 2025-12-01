@@ -43,7 +43,7 @@ public class Venta
     
     public String getFecha()
     {
-        return fecha.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        return fecha.format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
     }
     
     public String getHora()

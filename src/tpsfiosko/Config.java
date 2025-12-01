@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Config {
 
-    public static String leerRutaVentas() {
+    public static String LeerRutaVentas() {
         try {
             // El txt está en la carpeta raíz del proyecto
             Path path = Paths.get("rutaventas.txt");
