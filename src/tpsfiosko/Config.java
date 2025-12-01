@@ -17,7 +17,6 @@ public class Config {
             return ruta;
         } catch (IOException e) {
             e.printStackTrace();
-            // En caso de error, podés devolver una ruta por defecto o null
             return null;
         }
     }
