@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package tpsfiosko;
 
-/**
- *
- * @author User
- */
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.IOException;
+
 public class Config {
-    
+
+    public static String leerRutaVentas() {
+        try {
+            // El txt está en la carpeta raíz del proyecto
+            Path path = Paths.get("rutaventas.txt");
+            // Lee todas las líneas y toma la primera
+            String ruta = Files.readAllLines(path).get(0).trim();
+            return ruta;
+        } catch (IOException e) {
+            e.printStackTrace();
+            // En caso de error, podés devolver una ruta por defecto o null
+            return null;
+        }
+    }
 }

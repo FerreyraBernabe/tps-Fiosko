@@ -12,8 +12,8 @@ import java.io.FileOutputStream;
 public class ExcelWriter {
 
     public static void crearPlanilla() {
-        String excelPath = "C:\\Users\\User\\Documents\\U\\2do año\\Paradigmas\\TPS\\TPSFiosko\\ventas\\ventas.xlsx";
-
+        String excelPath = Config.leerRutaVentas();
+        
         File file = new File(excelPath);
         Workbook workbook = null;
         Sheet sheet = null;
