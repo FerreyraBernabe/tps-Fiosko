@@ -1,17 +1,18 @@
 package tpsfiosko;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-public class Persistencia 
+public  class Persistencia 
 {
-    private ArrayList<Producto> productos;
-    private ArrayList<Venta> Ventas;
+    private static ArrayList<Producto> productos;
+    private static ArrayList<Venta> ventas;
     
     public Persistencia()
     {
         inicializarProductos();
     }
-    
+
     public void inicializarProductos()
     {
         productos.add(new Producto("Gaseosa 500ml", 750.0f));
@@ -25,4 +26,19 @@ public class Persistencia
         productos.add(new Producto("Alfajor", 650.0f));
         productos.add(new Producto("Energética 473ml", 1200.0f));
     }
+    
+    public void inicializarVentas()
+    {
+        Random random = new Random();
+        for(int i=0;i<productos.size()-1;i++)
+        {
+            ventas.add(new Venta(productos.get(i), random.nextInt(5)+1));
+        }
+    }
+    
+    public ArrayList<Producto> getProductos() {return productos;}
+    public ArrayList<Venta> getVentas() {return ventas;}
+    
+    public void addProducto(Producto p){productos.add(p);}
+    public void addVenta(Venta v){ventas.add(v);}
 }
