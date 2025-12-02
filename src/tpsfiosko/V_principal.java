@@ -56,6 +56,7 @@ public class V_principal extends javax.swing.JFrame {
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         V_Venta v = new V_Venta();
         v.mostrar();
+        this.ocultar();
     }//GEN-LAST:event_btnVentaActionPerformed
 
     
