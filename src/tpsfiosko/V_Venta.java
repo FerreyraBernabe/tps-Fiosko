@@ -1,4 +1,5 @@
 package tpsfiosko;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 public class V_Venta extends javax.swing.JFrame {
@@ -11,7 +12,7 @@ public class V_Venta extends javax.swing.JFrame {
         limpiarCampos();
     }
 
-    public void cargarComboBox(){
+    public void cargarComboBox(ArrayList<Producto> productos){
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBox1.getModel();
         
         for(Producto prod : productos){
