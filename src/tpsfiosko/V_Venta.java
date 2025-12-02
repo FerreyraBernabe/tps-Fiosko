@@ -16,7 +16,6 @@ public class V_Venta extends javax.swing.JFrame {
         modelo.addElement("");
         cargarComboBox(p.getProductos());
         
-        
     }
 
     public void cargarComboBox(ArrayList<Producto> productos){
