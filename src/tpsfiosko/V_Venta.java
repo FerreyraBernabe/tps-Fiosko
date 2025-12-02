@@ -6,10 +6,12 @@ public class V_Venta extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(V_Venta.class.getName());
 
+    Persistencia p = new Persistencia();
     
     public V_Venta() {
         initComponents();
         limpiarCampos();
+        cargarComboBox(p.getProductos());
     }
 
     public void cargarComboBox(ArrayList<Producto> productos){

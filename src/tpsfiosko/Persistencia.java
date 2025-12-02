@@ -5,7 +5,7 @@ import java.util.Random;
 
 public  class Persistencia 
 {
-    private static ArrayList<Producto> productos;
+    private static ArrayList<Producto> productos = new ArrayList<Producto>();
     private static ArrayList<Venta> ventas;
     
     public Persistencia()
@@ -36,7 +36,10 @@ public  class Persistencia
         }
     }
     
-    public ArrayList<Producto> getProductos() {return productos;}
+    public ArrayList<Producto> getProductos() {
+        System.out.println("elemtos: "+ productos.size());
+        return productos;
+    }
     public ArrayList<Venta> getVentas() {return ventas;}
     
     public void addProducto(Producto p){productos.add(p);}
