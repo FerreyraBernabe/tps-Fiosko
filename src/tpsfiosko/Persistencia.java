@@ -13,7 +13,7 @@ public  class Persistencia
         inicializarProductos();
     }
 
-    public void inicializarProductos()
+    public static void inicializarProductos()
     {
         productos.add(new Producto("Gaseosa 500ml", 750.0f));
         productos.add(new Producto("Galletitas", 520.0f));
