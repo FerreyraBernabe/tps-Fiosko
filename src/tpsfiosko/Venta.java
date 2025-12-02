@@ -9,17 +9,17 @@ public class Venta
     private static int contadorId = 1;
     private int idVenta;
     private LocalDateTime fecha;
-    private String producto;
+    private Producto producto;
     private float monto;
     
-    public Venta(String producto, float monto)
+    public Venta(Producto producto, float monto)
     {
         idVenta = contadorId++;
         fecha = LocalDateTime.now();
         this.producto = producto;
         this.monto = monto;
     }
-    public Venta(int idVenta, LocalDateTime fecha, String producto, float monto)
+    public Venta(int idVenta, LocalDateTime fecha, Producto producto, float monto)
     {
         fecha = LocalDateTime.now();
         this.producto = producto;
@@ -31,7 +31,7 @@ public class Venta
         return idVenta;
     }
     
-    public String getProducto()
+    public Producto getProducto()
     {
         return producto;
     }
