@@ -174,7 +174,7 @@ public class V_Venta extends javax.swing.JFrame {
         int cantidad = Integer.parseInt(txtCantidad.getText());
         
         Venta v = new Venta(producto,cantidad);
-        
+        p.addVenta(v);
         limpiarCampos();
     }//GEN-LAST:event_btnCargarActionPerformed
 

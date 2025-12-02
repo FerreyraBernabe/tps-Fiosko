@@ -51,5 +51,9 @@ public  class Persistencia
     }
     
     public void addProducto(Producto p){productos.add(p);}
-    public void addVenta(Venta v){ventas.add(v);}
+    public void addVenta(Venta v)
+    {
+        ventas.add(v);
+        ExcelWriter.agregarVenta(v);
+    }
 }
