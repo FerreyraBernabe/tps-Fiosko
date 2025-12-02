@@ -6,14 +6,10 @@ import java.util.Random;
 public  class Persistencia 
 {
     private static ArrayList<Producto> productos = new ArrayList<Producto>();
-    private static ArrayList<Venta> ventas;
+    private static ArrayList<Venta> ventas = new ArrayList<Venta>();
     
-    public Persistencia()
-    {
-        inicializarProductos();
-    }
 
-    public void inicializarProductos()
+    public static void inicializarProductos()
     {
         productos.add(new Producto("Gaseosa 500ml", 750.0f));
         productos.add(new Producto("Galletitas", 520.0f));
@@ -27,7 +23,7 @@ public  class Persistencia
         productos.add(new Producto("Energética 473ml", 1200.0f));
     }
     
-    public void inicializarVentas()
+    public static void inicializarVentas()
     {
         Random random = new Random();
         for(int i=0;i<productos.size()-1;i++)
@@ -36,11 +32,11 @@ public  class Persistencia
         }
     }
     
-    public ArrayList<Producto> getProductos() {
+    public static ArrayList<Producto> getProductos() {
         System.out.println("elemtos: "+ productos.size());
         return productos;
     }
-    public ArrayList<Venta> getVentas() {return ventas;}
+    public static ArrayList<Venta> getVentas() {return ventas;}
     
     public Producto buscarProducto(String nombre)
     {
