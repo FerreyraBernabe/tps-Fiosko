@@ -8,67 +8,77 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+
 
 public class ExcelWriter {
-    
-    public void CrearPlanilla() {
-        
-    String excelPath = Config.LeerRutaVentas(); 
-    File file = new File(excelPath);
-    Workbook workbook = null;
-    Sheet sheet = null;
+
+    public static void guardarVentas(ArrayList<Venta> ventas, String rutaExcelVentas) {
+        File file = new File(rutaExcelVentas);
+        Workbook workbook;
+        Sheet sheet;
+        boolean archivoNuevo = !file.exists();
+
         try {
-            // Asegurar que exista el directorio padre
+            // Crear carpeta padre si no existe
             File parent = file.getParentFile();
-            if (!parent.exists()) {
+            if (parent != null && !parent.exists()) {
                 parent.mkdirs();
             }
 
-            if (file.exists() && file.isFile()) {
-                // Intentar abrir el archivo existente
-                try (FileInputStream fis = new FileInputStream(file)) {
-                    workbook = WorkbookFactory.create(fis); // puede tirar la POIXMLException
-                } catch (Exception e) {
-                    // Si está corrupto o no se puede abrir, creamos uno nuevo
-                    System.out.println("Archivo existente da error al abrir, se crea uno nuevo: " + e);
-                    workbook = new XSSFWorkbook();
-                }
-            } else {
-                // Si no existe, creamos uno nuevo
+            if (archivoNuevo) {
+                // Crear libro nuevo
                 workbook = new XSSFWorkbook();
-            }
-
-            // Obtener o crear hoja
-            if (workbook.getNumberOfSheets() > 0) {
-                sheet = workbook.getSheetAt(0);
-            } else {
                 sheet = workbook.createSheet("Ventas");
-            }
-            
-            // Calcular el número de fila siguiente
-            int rowNum;
-            if (sheet.getPhysicalNumberOfRows() == 0) {
-                rowNum = 0;
+
+                // Cabeceras
+                Row header = sheet.createRow(0);
+                header.createCell(0).setCellValue("IdVentaTPS");
+                header.createCell(1).setCellValue("FechaHora");
+                header.createCell(2).setCellValue("Producto");
+                header.createCell(3).setCellValue("Monto");
+
             } else {
-                rowNum = sheet.getLastRowNum() + 1;
+                // Abrir existente
+                try (FileInputStream fis = new FileInputStream(file)) {
+                    workbook = WorkbookFactory.create(fis);
+                }
+                sheet = workbook.getSheetAt(0);
+                if (sheet == null) {
+                    sheet = workbook.createSheet("Ventas");
+                }
             }
 
-            Row row = sheet.createRow(rowNum);
-            row.createCell(0).setCellValue("Venta " + rowNum);
-            row.createCell(1).setCellValue(100.0 * rowNum);
+            // Buscar la próxima fila libre
+            int rowNum = sheet.getLastRowNum();
+            if (archivoNuevo && rowNum == 0 && sheet.getPhysicalNumberOfRows() == 1) {
+                // Sólo header
+                rowNum = 1;
+            } else {
+                rowNum = rowNum + 1;
+            }
 
-            // Escribir el archivo
+            // Escribir todas las ventas
+            for (Venta v : ventas) {
+                Row row = sheet.createRow(rowNum++);
+
+                row.createCell(0).setCellValue(v.getId());
+                row.createCell(1).setCellValue(v.getFecha());
+                row.createCell(2).setCellValue(v.getProducto().getNombre());
+                row.createCell(3).setCellValue(v.getMonto());
+            }
+
+            // Guardar
             try (FileOutputStream fos = new FileOutputStream(file)) {
                 workbook.write(fos);
             }
-
             workbook.close();
-            System.out.println("Fila escrita exitosamente en " + excelPath);
+
+            System.out.println("Ventas guardadas en: " + rutaExcelVentas);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
- 
 }
 
