@@ -9,7 +9,8 @@ public class Main {
         v.setVisible(true);
         Persistencia.inicializarProductos();
         Persistencia.inicializarVentas();
-        ExcelWriter.inicializarExcel(Persistencia.getVentas(),Config.LeerRutaVentas());
+        ExcelWriter.initVentas(Persistencia.getVentas(),Config.LeerRutaVentas());
+        ExcelWriter.initPagosDig(Persistencia.getVentas(),Config.LeerRutaPagos());
 
     }
 }

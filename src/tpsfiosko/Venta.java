@@ -6,10 +6,10 @@ import java.time.format.DateTimeFormatter;
 
 public class Venta 
 {
-    private static int contadorId = 1;
+    private static int contadorId = 18293000;
     private int idVenta;
     private LocalDateTime fecha;
-    private Producto producto;
+    private Producto producto;  
     private int cantidad;
     private float monto;
     
@@ -25,6 +25,7 @@ public class Venta
     public Venta(int idVenta, LocalDateTime fecha, Producto producto, float monto, int cantidad)
     {
         fecha = LocalDateTime.now();
+        System.out.println("fecha:asdadssa");
         this.producto = producto;
         this.monto = monto;
         this.cantidad = cantidad;
@@ -52,7 +53,7 @@ public class Venta
     
     public String getFecha()
     {
-        return fecha.format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
+        return fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
     
     public String getHora()
