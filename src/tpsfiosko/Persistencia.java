@@ -39,6 +39,18 @@ public  class Persistencia
     public ArrayList<Producto> getProductos() {return productos;}
     public ArrayList<Venta> getVentas() {return ventas;}
     
+    public Producto buscarProducto(String nombre)
+    {
+        for(Producto p : productos)
+        {
+            if(p.getNombre().equals(nombre))
+            {
+                return p;
+            }
+        }
+        return null;
+    }
+    
     public void addProducto(Producto p){productos.add(p);}
     public void addVenta(Venta v){ventas.add(v);}
 }
