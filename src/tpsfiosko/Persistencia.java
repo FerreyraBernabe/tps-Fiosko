@@ -28,7 +28,7 @@ public  class Persistencia
         Random random = new Random();
         for(int i=0;i<productos.size()-1;i++)
         {
-            ventas.add(new Venta(productos.get(i), random.nextInt(5)+1));
+            ventas.add(new Venta(productos.get(random.nextInt(5)), random.nextInt(5)+1));
         }
     }
     
