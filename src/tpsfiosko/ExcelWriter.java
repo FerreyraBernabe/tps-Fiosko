@@ -68,6 +68,7 @@ public class ExcelWriter {
                 row.createCell(1).setCellValue(v.getFecha());
                 row.createCell(2).setCellValue(v.getProducto().getNombre());
                 row.createCell(3).setCellValue(v.getMonto());
+                row.createCell(4).setCellValue(v.getMedio());
             }
 
             // Guardar

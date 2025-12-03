@@ -12,20 +12,20 @@ public class Venta
     private Producto producto;  
     private int cantidad;
     private float monto;
+    private String medioDePago;
     
-    public Venta(Producto producto, int cantidad)
+    public Venta(Producto producto, int cantidad, String medioDePago)
     {
         idVenta = contadorId++;
         fecha = LocalDateTime.now();
         this.producto = producto;
         this.cantidad = cantidad;
-        
         this.monto = producto.getPrecio()*cantidad;
+        this.medioDePago = medioDePago;
     }
     public Venta(int idVenta, LocalDateTime fecha, Producto producto, float monto, int cantidad)
     {
         fecha = LocalDateTime.now();
-        System.out.println("fecha:asdadssa");
         this.producto = producto;
         this.monto = monto;
         this.cantidad = cantidad;
@@ -59,5 +59,10 @@ public class Venta
     public String getHora()
     {
         return fecha.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+    }
+    
+    public String getMedio()
+    {
+        return this.medioDePago;
     }
 }

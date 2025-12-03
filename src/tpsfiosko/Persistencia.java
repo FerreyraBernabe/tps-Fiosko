@@ -7,7 +7,8 @@ public  class Persistencia
 {
     private static ArrayList<Producto> productos = new ArrayList<Producto>();
     private static ArrayList<Venta> ventas = new ArrayList<Venta>();
-    
+    private static ArrayList<String> medios = new ArrayList<String>();
+
 
     public static void inicializarProductos()
     {
@@ -25,10 +26,12 @@ public  class Persistencia
     
     public static void inicializarVentas()
     {
+        medios.add("QR");
+        medios.add("Debito");
         Random random = new Random();
         for(int i=0;i<productos.size()-1;i++)
         {
-            ventas.add(new Venta(productos.get(random.nextInt(5)), random.nextInt(5)+1));
+            ventas.add(new Venta(productos.get(random.nextInt(5)), random.nextInt(5)+1,medios.get(random.nextInt(2))));
         }
     }
     
