@@ -2,12 +2,12 @@ package tpsfiosko;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
-public class V_Venta extends javax.swing.JFrame {
+public class V_Venta22 extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(V_Venta.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(V_Venta22.class.getName());
     Persistencia p = new Persistencia();
     
-    public V_Venta() {
+    public V_Venta22() {
         initComponents();
         limpiarCampos();
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) jComboBox1.getModel();
@@ -149,9 +149,9 @@ public class V_Venta extends javax.swing.JFrame {
                     .addComponent(jComboBox1)
                     .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(boxMedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boxMedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
