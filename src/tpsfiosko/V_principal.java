@@ -94,7 +94,7 @@ public class V_principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-        V_Venta22 v = new V_Venta22();
+        V_Venta v = new V_Venta();
         v.mostrar();
         this.ocultar();
     }//GEN-LAST:event_btnVentaActionPerformed
