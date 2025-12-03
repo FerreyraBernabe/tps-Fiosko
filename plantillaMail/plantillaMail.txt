@@ -1,0 +1,16 @@
+Hola,
+
+Te envío el resumen de la conciliación del día {{FECHA}}.
+
+Resultados generales:
+- Ventas digitales procesadas: {{TOTAL}}
+- Ventas conciliadas correctamente: {{OK}}
+- Ventas sin cobro: {{SINCOBRO}}
+- Pagos fallidos o pendientes: {{FALLIDOS}}
+- Diferencias de monto: {{DIFMONTO}}
+- Cobros sin venta TPS: {{COBROSINV}}
+
+Los archivos de detalle se adjuntan a este correo.
+
+Saludos,
+Bot de Conciliación de Pagos - El Fiosko
