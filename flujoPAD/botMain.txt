@@ -1,0 +1,26 @@
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $'''C:\\Users\\User\\Desktop\\tpsFioskoV2\\tps-Fiosko\\ventas\\ventas.xlsx''' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelVentas
+IF (UIAutomation.IfWindow.IsOpenByTitleClass Title: $'''Asistente para la activación de Microsoft Office''' Class: $'''''') THEN
+    UIAutomation.CloseWindow.CloseByTitleClass Title: $'''Asistente para la activación de Microsoft Office''' Class: $''''''
+END
+Excel.LaunchExcel.LaunchAndOpen Path: $'''C:\\Users\\User\\Desktop\\tpsFioskoV2\\tps-Fiosko\\ventas\\pagos.xlsx''' Visible: True ReadOnly: False LoadAddInsAndMacros: False UseMachineLocale: False Instance=> ExcelPagos
+WAIT 6
+IF (UIAutomation.IfWindow.IsOpenByTitleClass Title: $'''Asistente para la activación de Microsoft Office''' Class: $'''''') THEN
+    UIAutomation.CloseWindow.CloseByTitleClass Title: $'''Asistente para la activación de Microsoft Office''' Class: $''''''
+END
+Excel.ReadFromExcel.ReadAllCells Instance: ExcelVentas GetCellContentsMode: Excel.GetCellContentsMode.TypedValues FirstLineIsHeader: True RangeValue=> VentasData
+Excel.ReadFromExcel.ReadAllCells Instance: ExcelPagos GetCellContentsMode: Excel.GetCellContentsMode.TypedValues FirstLineIsHeader: True RangeValue=> PagosData
+**REGION Variables de control
+SET TotalVentas TO 0
+SET VentasValidas TO 0
+SET NoCobradas TO 0
+SET PagoFallido TO 0
+SET MontoDif TO 0
+SET CobroSinVenta TO 0
+**ENDREGION
+CALL LoopVentas
+CALL LoopPagos
+CALL EscribirResumen
+Excel.CloseExcel.CloseAndSave Instance: ExcelVentas
+Excel.CloseExcel.CloseAndSave Instance: ExcelPagos
+CALL CrearMail
+Email.SendEmail.AuthenticateAndSend SMTPServer: $'''smtp.gmail.com''' Port: 587 EnableSSL: True Username: $'''bernabeferreyra78@gmail.com''' Password: $'''jrfk jxlp tind izqp''' AcceptUntrustedCertificates: True SendFrom: $'''bernabeferreyra78@gmail.com''' SenderDisplayName: $'''Bot de Conciliacion - El Fiosko''' SendTo: $'''guille1000@live.com;frantejerizo12@gmail.com;bernabeferreyra78@gmail.com''' Subject: $'''Conciliación de pagos digitales - El Fiosko - %TxtFechaConciliacion%''' Body: CuerpoMail IsBodyHtml: False Attachments: ['C:\\Users\\User\\Desktop\\tpsFioskoV2\\tps-Fiosko\\ventas\\pagos.xlsx', 'C:\\Users\\User\\Desktop\\tpsFioskoV2\\tps-Fiosko\\ventas\\ventas.xlsx']

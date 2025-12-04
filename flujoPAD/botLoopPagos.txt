@@ -1,0 +1,19 @@
+SET Fila TO 2
+LOOP FOREACH PagoActual IN PagosData
+    SET EncontradoEnVentas TO $'''False'''
+    LOOP FOREACH VentaActual IN VentasData
+        IF PagoActual['idPago'] = VentaActual['idVentaTPS'] THEN
+            SET EncontradoEnVentas TO $'''True'''
+            EXIT LOOP
+        ELSE
+            SET EncontradoEnVentas TO $'''False'''
+        END
+    END
+    IF EncontradoEnVentas = $'''False''' THEN
+        Excel.WriteToExcel.WriteCell Instance: ExcelPagos Value: $'''Venta NO generada / Cobro realizado''' Column: 7 Row: Fila
+        Variables.IncreaseVariable Value: CobroSinVenta IncrementValue: 1
+    ELSE
+        Excel.WriteToExcel.WriteCell Instance: ExcelPagos Value: $'''Venta registrada''' Column: 7 Row: Fila
+    END
+    Variables.IncreaseVariable Value: Fila IncrementValue: 1
+END

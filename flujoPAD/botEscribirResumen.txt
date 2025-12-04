@@ -1,0 +1,13 @@
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: $'''RESUMEN CONCILIACIÓN''' Column: 8 Row: 2
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: $'''Total ventas digitales''' Column: 8 Row: 3
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: TotalVentas Column: 9 Row: 3
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: $'''Ventas VALIDAS''' Column: 8 Row: 4
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: VentasValidas Column: 9 Row: 4
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: $'''Ventas SIN COBRO''' Column: 8 Row: 5
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: NoCobradas Column: 9 Row: 5
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: $'''Pagos fallidos/pendientes''' Column: 8 Row: 6
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: PagoFallido Column: 9 Row: 6
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: $'''Diferencia de monto''' Column: 8 Row: 7
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: MontoDif Column: 9 Row: 7
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: $'''Cobros registrados SIN VENTA''' Column: 8 Row: 8
+Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: CobroSinVenta Column: 9 Row: 8

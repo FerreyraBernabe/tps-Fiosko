@@ -1,0 +1,10 @@
+File.ReadTextFromFile.ReadText File: $'''C:\\Users\\User\\Desktop\\tpsFioskoV2\\tps-Fiosko\\plantillaMail\\plantillaMail.txt''' Encoding: File.TextFileEncoding.UTF8 Content=> CuerpoMail
+DateTime.GetCurrentDateTime.Local DateTimeFormat: DateTime.DateTimeFormat.DateOnly CurrentDateTime=> FechaConciliacion
+Text.ConvertDateTimeToText.FromDateTime DateTime: FechaConciliacion StandardFormat: Text.WellKnownDateTimeFormat.ShortDate Result=> TxtFechaConciliacion
+Text.Replace Text: CuerpoMail TextToFind: $'''{{FECHA}}''' IsRegEx: False IgnoreCase: False ReplaceWith: TxtFechaConciliacion ActivateEscapeSequences: False Result=> CuerpoMail
+Text.Replace Text: CuerpoMail TextToFind: $'''{{TOTAL}}''' IsRegEx: False IgnoreCase: False ReplaceWith: TotalVentas ActivateEscapeSequences: False Result=> CuerpoMail
+Text.Replace Text: CuerpoMail TextToFind: $'''{{OK}}''' IsRegEx: False IgnoreCase: False ReplaceWith: VentasValidas ActivateEscapeSequences: False Result=> CuerpoMail
+Text.Replace Text: CuerpoMail TextToFind: $'''{{SINCOBRO}}''' IsRegEx: False IgnoreCase: False ReplaceWith: NoCobradas ActivateEscapeSequences: False Result=> CuerpoMail
+Text.Replace Text: CuerpoMail TextToFind: $'''{{FALLIDOS}}''' IsRegEx: False IgnoreCase: False ReplaceWith: PagoFallido ActivateEscapeSequences: False Result=> CuerpoMail
+Text.Replace Text: CuerpoMail TextToFind: $'''{{DIFMONTO}}''' IsRegEx: False IgnoreCase: False ReplaceWith: MontoDif ActivateEscapeSequences: False Result=> CuerpoMail
+Text.Replace Text: CuerpoMail TextToFind: $'''{{COBROSINV}}''' IsRegEx: False IgnoreCase: False ReplaceWith: CobroSinVenta ActivateEscapeSequences: False Result=> CuerpoMail

@@ -1,0 +1,35 @@
+SET Fila TO 2
+LOOP FOREACH VentaActual IN VentasData
+    SET EstadoConciliacion TO $'''No cobrado'''
+    SET Encontrado TO $'''False'''
+    LOOP FOREACH PagoActual IN PagosData
+        IF VentaActual['idVentaTPS'] = PagoActual['idPago'] THEN
+            SET Encontrado TO $'''True'''
+            IF PagoActual['EstadoPago'] <> $'''Acreditado''' THEN
+                SET EstadoConciliacion TO $'''Pago fallido/pendiente'''
+            ELSE IF VentaActual['MontoBruto'] <> PagoActual['MontoCobrado'] THEN
+                SET EstadoConciliacion TO $'''Diferencia en los montos'''
+            ELSE
+                SET EstadoConciliacion TO $'''Validado'''
+            END
+            EXIT LOOP
+        END
+    END
+    **REGION Incremento de Variables
+    Variables.IncreaseVariable Value: TotalVentas IncrementValue: 1
+    IF EstadoConciliacion = $'''Validado''' THEN
+        Variables.IncreaseVariable Value: VentasValidas IncrementValue: 1
+    END
+    IF EstadoConciliacion = $'''Pago fallido/pendiente''' THEN
+        Variables.IncreaseVariable Value: PagoFallido IncrementValue: 1
+    END
+    IF EstadoConciliacion = $'''Diferencia en los montos''' THEN
+        Variables.IncreaseVariable Value: MontoDif IncrementValue: 1
+    END
+    IF EstadoConciliacion = $'''No cobrado''' THEN
+        Variables.IncreaseVariable Value: NoCobradas IncrementValue: 1
+    END
+    **ENDREGION
+    Excel.WriteToExcel.WriteCell Instance: ExcelVentas Value: EstadoConciliacion Column: 6 Row: Fila
+    Variables.IncreaseVariable Value: Fila IncrementValue: 1
+END
